@@ -1,7 +1,4 @@
 export class ThemeSwitcher {
-  static LIGHT = 'light-theme';
-  static DARK = 'dark-theme';
-
   static Controller = class {
     #elem;
     #elemEvent;
@@ -31,13 +28,7 @@ export class ThemeSwitcher {
   #themes;
   #localParam;
   #name;
-  constructor(
-    elem,
-    controller,
-    themes = { light: ThemeSwitcher.LIGHT, dark: ThemeSwitcher.DARK },
-    localParam = 'theme',
-    defaultIndex = 0,
-  ) {
+  constructor(elem, controller, themes, localParam = 'theme', defaultIndex = 0) {
     this.#elem = typeof elem === 'string' ? document.querySelector(elem) : elem;
     this.#controller = controller;
     this.#themes = themes;
@@ -68,7 +59,6 @@ export class ThemeSwitcher {
     const nameList = Object.keys(this.#themes);
     if (themeIndex >= nameList.length) return;
     this.name = nameList[themeIndex];
-    //console.log(nameList);
   }
 
   get index() {
