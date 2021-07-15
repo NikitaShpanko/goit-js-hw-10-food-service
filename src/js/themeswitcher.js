@@ -1,28 +1,4 @@
 export class ThemeSwitcher {
-  static Controller = class {
-    #elem;
-    #elemEvent;
-    #elemProperty;
-    #themeProperty;
-
-    constructor(elem, elemEvent, elemProperty, themeProperty) {
-      this.#elem = typeof elem === 'string' ? document.querySelector(elem) : elem;
-      this.#elemEvent = elemEvent;
-      this.#elemProperty = elemProperty;
-      this.#themeProperty = themeProperty;
-    }
-
-    reportTo(themeObj) {
-      this.#elem.addEventListener(this.#elemEvent, () => {
-        themeObj[this.#themeProperty] = this.#elem[this.#elemProperty];
-      });
-    }
-
-    updateFrom(themeObj) {
-      this.#elem[this.#elemProperty] = themeObj[this.#themeProperty];
-    }
-  };
-
   #elem;
   #controller;
   #themes;
@@ -64,6 +40,30 @@ export class ThemeSwitcher {
   get index() {
     return Object.keys(this.#themes).indexOf(this.#name);
   }
+
+  static Controller = class {
+    #elem;
+    #elemEvent;
+    #elemProperty;
+    #themeProperty;
+
+    constructor(elem, elemEvent, elemProperty, themeProperty) {
+      this.#elem = typeof elem === 'string' ? document.querySelector(elem) : elem;
+      this.#elemEvent = elemEvent;
+      this.#elemProperty = elemProperty;
+      this.#themeProperty = themeProperty;
+    }
+
+    reportTo(themeObj) {
+      this.#elem.addEventListener(this.#elemEvent, () => {
+        themeObj[this.#themeProperty] = this.#elem[this.#elemProperty];
+      });
+    }
+
+    updateFrom(themeObj) {
+      this.#elem[this.#elemProperty] = themeObj[this.#themeProperty];
+    }
+  };
 
   static Checkbox = class extends ThemeSwitcher.Controller {
     constructor(elem) {
