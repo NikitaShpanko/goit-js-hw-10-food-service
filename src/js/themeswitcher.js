@@ -4,6 +4,7 @@ export class ThemeSwitcher {
   #themes;
   #localParam;
   #name;
+  #currentClass;
   constructor(elem, controller, themes, localParam = 'theme', defaultIndex = 0) {
     this.#elem = typeof elem === 'string' ? document.querySelector(elem) : elem;
     this.#controller = controller;
@@ -20,7 +21,10 @@ export class ThemeSwitcher {
   set name(themeName) {
     if (!(themeName in this.#themes)) return;
     this.#name = themeName;
-    this.#elem.className = this.#themes[themeName];
+    if (this.#currentClass) this.#elem.classList.remove(this.#currentClass);
+    const newClass = this.#themes[themeName];
+    this.#elem.classList.add(newClass);
+    this.#currentClass = newClass;
     localStorage.setItem(this.#localParam, themeName);
     this.#controller.updateFrom(this);
   }
