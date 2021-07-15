@@ -1,26 +1,31 @@
 {
-    "name": "goit-js-hw-10-food-service",
-    "version": "1.0.0",
-    "description": "",
-    "main": "",
-    "scripts": {
-        "dev": "parcel ./src/index.html",
-        "build": "parcel build ./src/index.html"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/NikitaShpanko/goit-js-hw-10-food-service.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/NikitaShpanko/goit-js-hw-10-food-service/issues"
-    },
-    "homepage": "https://github.com/NikitaShpanko/goit-js-hw-10-food-service#readme",
-    "dependencies": {},
-    "devDependencies": {
-        "parcel-bundler": "^1.12.5",
-        "parcel-plugin-handlebars-precompile": "^1.0.2"
-    }
+  "name": "goit-js-hw-10-food-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --public-url /goit-js-hw-10-food-service/",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikitaShpanko/goit-js-hw-10-food-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikitaShpanko/goit-js-hw-10-food-service/issues"
+  },
+  "homepage": "https://nikitashpanko.github.com/goit-js-hw-10-food-service",
+  "dependencies": {
+    "gh-pages": "^3.2.3",
+    "parcel-plugin-nuke-dist": "^1.0.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2"
+  }
 }
